@@ -23,5 +23,6 @@ COPY tqdm /app/tqdm
 COPY tqdm-4.66.1.dist-info /app/tqdm-4.66.1.dist-info
 COPY urllib3 /app/urllib3
 COPY urllib3-2.0.6.dist-info /app/urllib3-2.0.6-dist.info
+COPY _cffi_backend.cpython-311-x86_64-linux-gnu.so /app
 COPY lambda_function.py /app/
 CMD ["python3", "lambda_function.py"]
