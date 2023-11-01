@@ -1,4 +1,4 @@
 FROM python:3.11
-WORKDIR /vag
-COPY lambda_function.py /vag/
+WORKDIR /app
+COPY lambda_function.py /app/
 CMD ["python3", "lambda_function.py"]
