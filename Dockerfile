@@ -1,5 +1,7 @@
 FROM python:3.11
+
 WORKDIR /app
+
 COPY asn1crypto /app/asn1crypto
 COPY asn1crypto-1.5.1.dist-info /app/asn1crypto-1.5.1.dist-info
 COPY bit /app/bit
@@ -22,9 +24,12 @@ COPY tests /app/tests
 COPY tqdm /app/tqdm
 COPY tqdm-4.66.1.dist-info /app/tqdm-4.66.1.dist-info
 COPY urllib3 /app/urllib3
-COPY urllib3-2.0.6.dist-info /app/urllib3-2.0.6-dist.info
+COPY urllib3-2.0.6.dist-info /app/urllib3-2.0.6.dist-info
 COPY _cffi_backend.cpython-311-x86_64-linux-gnu.so /app
 COPY lambda_function.py /app/
+
 RUN chmod +x /app/lambda_function.py
+
 EXPOSE 8080
+
 CMD ["python3", "/app/lambda_function.py"]
