@@ -2,7 +2,6 @@ import bit
 import random
 import json
 import threading
-import sys # Importar o módulo sys
 
 MAX_INT = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364140
 MAX_TRIES = 10000000000000
@@ -46,24 +45,12 @@ def lambda_handler(event, context):
     prefix = event['prefix']
     result = []
     
-    # Create a Thread
-    thread = threading.Thread(target=generate_vanity_address, args=(prefix,result,))
+    generate_vanity_address(prefix, result)
     
-    # Start the thread
-    thread.start()
-    
-    # Wait for the thread to finish
-    thread.join()
-    
-    # Return the result
     return result[0] if result else None
 
-# Obter o nome do arquivo JSON como argumento
-filename = sys.argv[1]
-
-# Abrir o arquivo JSON e ler o seu conteúdo
-with open(filename) as f:
-    content = f.read()
+# Ler o conteúdo do arquivo JSON diretamente
+content = sys.stdin.read()
 
 # Converter o conteúdo do arquivo JSON em um objeto Python
 event = json.loads(content)
