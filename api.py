@@ -21,7 +21,7 @@ class Address(BaseModel):
 class Error(BaseModel):
     error: str
 
-@app.get("/generate", response_model=Optional[Address, Error])
+@app.get("/generate", response_model=Union[Address, Error])
 async def generate_address(prefix: Prefix):
     for _ in range(MAX_TRIES):
         private_key_bytes = random.randint(1, MAX_INT).to_bytes(32, byteorder='big')
