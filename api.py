@@ -43,4 +43,4 @@ async def generate_address(prefix: Prefix):
     )
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=PORT)  # Usando a variável PORT lida do ambiente
+    uvicorn.run(app, host="0.0.0.0", port=8000)  # Usando a variável PORT lida do ambiente

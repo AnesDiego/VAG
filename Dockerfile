@@ -15,7 +15,7 @@ RUN pip install -r requirements.txt
 ENV PORT=8000
 
 # Exponha a porta
-EXPOSE $PORT
+EXPOSE 8000
 
 # Comando para executar o aplicativo
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "$PORT"]
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
