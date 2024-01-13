@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from pydantic import BaseModel, constr
 from typing import Optional
@@ -8,6 +9,8 @@ import json
 
 MAX_INT = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364140
 MAX_TRIES = 10000000000000
+
+PORT = int(os.getenv("PORT", 8000))  # Incorporando a sugestão de ler a variável PORT do ambiente
 
 app = FastAPI()
 
@@ -38,3 +41,6 @@ async def generate_address(prefix: Prefix):
     return Error(
         error="No matching address found within the maximum number of tries."
     )
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=PORT)  # Usando a variável PORT lida do ambiente
